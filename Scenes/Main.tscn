@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3yfhiau202s3"]
+
+[ext_resource type="PackedScene" uid="uid://u7kpmeis8blj" path="res://Scenes/Bodies/Player.tscn" id="1_r150o"]
+[ext_resource type="Texture2D" uid="uid://cgl14xof17wr8" path="res://icon.svg" id="2_idj7w"]
+[ext_resource type="Script" uid="uid://y6ivx2jos53d" path="res://Scripts/CameraPickup.gd" id="6_bmxlf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kln2b"]
+size = Vector2(63, 61)
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_r150o")]
+position = Vector2(711, 328)
+
+[node name="CameraPickup" type="Area2D" parent="."]
+script = ExtResource("6_bmxlf")
+
+[node name="Sprite2D" type="Sprite2D" parent="CameraPickup"]
+position = Vector2(298.5, 293.5)
+scale = Vector2(0.4921875, 0.4921875)
+texture = ExtResource("2_idj7w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraPickup"]
+position = Vector2(298.5, 293.5)
+shape = SubResource("RectangleShape2D_kln2b")

@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://u7kpmeis8blj"]
+
+[ext_resource type="Texture2D" uid="uid://cgl14xof17wr8" path="res://icon.svg" id="1_3vx3j"]
+[ext_resource type="Script" uid="uid://c7cxenfixqfod" path="res://Scripts/Bodies/player.gd" id="1_ve7e1"]
+[ext_resource type="Script" uid="uid://te3lemopj42n" path="res://Scripts/CameraView.gd" id="3_j0noa"]
+[ext_resource type="Texture2D" uid="uid://cug3qa4ocgn6r" path="res://Assets/testHall.png" id="4_cx0xx"]
+[ext_resource type="Script" uid="uid://bd12vw6d3c1mn" path="res://Scripts/HallwaySprite.gd" id="5_j6gre"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ve7e1"]
+size = Vector2(128, 124)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_ve7e1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vx3j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_ve7e1")
+
+[node name="CameraView" type="CanvasLayer" parent="."]
+script = ExtResource("3_j0noa")
+
+[node name="Control" type="Control" parent="CameraView"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CameraView/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="BatteryLabel" type="Label" parent="CameraView/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+metadata/_edit_use_anchors_ = true
+
+[node name="HallwaySprite" type="Sprite2D" parent="CameraView/Control"]
+position = Vector2(579, 328.25)
+scale = Vector2(0.599537, 0.599537)
+texture = ExtResource("4_cx0xx")
+script = ExtResource("5_j6gre")
